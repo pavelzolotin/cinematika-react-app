@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+/* base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-unbounded: "Unbounded", cursive;
+  --font-play: "Play", sans-serif;
+}
+
+body {
+  font-family: var(--font-unbounded);
+  background-color: #212426;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: .5rem .5rem .5rem -.5rem rgba(34, 60, 80, 0.2) inset;
+  background-color: #212426;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #343739;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: .5rem .5rem .5rem -.5rem rgba(34, 60, 80, 0.2) inset;
+  background-color: #212426;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #343739;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 132rem;
+  margin: auto;
+
+  &__title {
+    width: fit-content;
+    font-size: 3rem;
+    letter-spacing: .9rem;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, rgba(249, 211, 180, 1) 0%, rgba(249, 211, 180, 0) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.movie {
+  position: relative;
+  width: 30rem;
+  height: 45rem;
+  margin: 1.5rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  border: none;
+  opacity: 1;
+  transition: all 2s cubic-bezier(0.175, 0.885, 0, 1);
+  box-shadow: 0 1.3rem 1rem -.7rem rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    box-shadow: 0 3rem 1.8rem -.8rem rgba(0, 0, 0, 0.1);
+    transform: scale(1.05, 1.05);
+  }
+
+  &:hover &__image {
+    height: 100%;
+    opacity: 0.3;
+    transition: opacity .3s ease;
+  }
+
+  &:hover &__year {
+    opacity: 1;
+  }
+
+  &__search {
+    width: 25%;
+    margin: 4rem;
+    position: relative;
+
+    &__input {
+      width: 100%;
+      font-size: 1.8rem;
+      color: #b7b7b7;
+      padding: 1.5rem 2.5rem;
+      letter-spacing: 0.16rem;
+      border: .2rem solid #343739;
+      border-radius: 3rem;
+      background: transparent;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    &__input ~ &__input--bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #343739;
+      border-radius: 3rem;
+      opacity: 0;
+      transition: .5s;
+      z-index: -1;
+    }
+
+    &__input:focus ~ &__input--bg {
+      transition: .5s;
+      opacity: 1;
+      outline: none;
+    }
+
+    &--empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 5rem;
+
+      h2 {
+        font-family: var(--font-play);
+        font-size: 2rem;
+        color: #f9d3b4;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin: .5rem 0 1.5rem 0;
+    font-family: var(--font-play);
+    color: #f9d3b4;
+  }
+
+  &__card-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 3rem;
+  }
+
+  &__year {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.6rem;
+    opacity: 0;
+    color: #f9d3b4;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    transition: opacity 3s cubic-bezier(0.175, 0.885, 0, 1);
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 1rem 2rem 1rem 2rem;
+    background-color: #343739;
+    z-index: 2;
+  }
+
+  span {
+    font-family: var(--font-play);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: .2rem;
+    font-weight: 500;
+    color: #b7b7b7;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .app {
+    padding: 4rem 2rem;
+
+    &__header {
+      flex-direction: column;
+    }
+  }
+
+  .movie {
+    margin: 2rem 1.2rem 2rem 1.2rem;
+
+    &__search {
+      margin: 4rem 1.5rem 1rem 1.5rem;
+      width: 100%;
+
+      input {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
