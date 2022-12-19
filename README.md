@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Cinematika
+
+This is a test project in building an application with cards about movies uploaded using the API.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
