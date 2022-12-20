@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 
+:root {
+  /** sunny side **/
+  --blue-border: #72cce3;
+  --blue-color: #96dcee;
+  --yellow-background: #fffaa8;
+  --yellow-border: #f5eb71;
+  /** dark side **/
+  --indigo-border: #5d6baa;
+  --indigo-color: #6b7abb;
+  --gray-border: #e8e8ea;
+  --gray-dots: #e8e8ea;
+  /** general **/
+  --white: #fff;
+}
+
 /* base styles */
 * {
   margin: 0;
@@ -20,6 +35,26 @@ body {
 
 html {
   font-size: 62.5%;
+}
+
+/* toggle theme button styles */
+.dark {
+  background-color: #212426;
+  color: #f9d3b4;
+}
+
+.light {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* toggle logo styles */
+.darken {
+  background: linear-gradient(90deg, rgb(52 55 57) 0%, rgba(52, 55, 57, 0) 100%);
+}
+
+.lighten {
+  background: linear-gradient(90deg, rgba(249, 211, 180, 1) 0%, rgba(249, 211, 180, 0) 100%);
 }
 
 /* custom scrollbar */
@@ -62,7 +97,6 @@ a {
     font-size: 3rem;
     letter-spacing: .9rem;
     text-transform: uppercase;
-    background: linear-gradient(90deg, rgba(249, 211, 180, 1) 0%, rgba(249, 211, 180, 0) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -73,6 +107,39 @@ a {
     justify-content: space-around;
     align-items: center;
     width: 100%;
+  }
+
+  &__toggle-theme--checkbox {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__toggle-theme--label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: #111;
+    width: 5rem;
+    height: 2.6rem;
+    border-radius: 5rem;
+    padding: .5rem;
+    cursor: pointer;
+  }
+
+  &__toggle-theme--label &__toggle-theme--toggle {
+    position: absolute;
+    background-color: #fff;
+    width: 2.2rem;
+    height: 2.2rem;
+    left: .2rem;
+    top: .2rem;
+    border-radius: 50%;
+    transition: transform .2s linear;
+  }
+
+  &__toggle-theme--checkbox:checked + &__toggle-theme--label &__toggle-theme--toggle {
+    transform: translateX(2.4rem);
   }
 }
 
@@ -87,6 +154,7 @@ a {
   opacity: 1;
   transition: all 2s cubic-bezier(0.175, 0.885, 0, 1);
   box-shadow: 0 1.3rem 1rem -.7rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0 3rem 1.8rem -.8rem rgba(0, 0, 0, 0.1);

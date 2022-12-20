@@ -14,9 +14,21 @@ const options = {
 }
 
 function App() {
+    const [theme, setTheme] = useState('dark')
+    const [logo, setLogoColor] = useState('lighten')
     const [movies, setMovies] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
     const searchResult = `${API_SEARCH}${searchTerm}`
+
+    const toggleTheme = () => {
+        if (theme === 'dark') {
+            setTheme('light')
+            setLogoColor('darken')
+        } else {
+            setTheme('dark')
+            setLogoColor('lighten')
+        }
+    }
 
     const getMovies = (url) => {
         fetch(url, options)
@@ -31,6 +43,10 @@ function App() {
     }
 
     useEffect(() => {
+        document.body.className = theme
+    }, [theme, logo])
+
+    useEffect(() => {
         if (searchTerm !== '') {
             getMovies(searchResult)
         } else {
@@ -39,10 +55,10 @@ function App() {
     }, [searchTerm, searchResult])
 
     return (
-        <div className="app">
+        <div className={`app ${theme}`}>
             <div className="app__header">
                 <a href="/" className="app__logo">
-                    <h1 className="app__title">Cinematika</h1>
+                    <h1 className={`app__title ${logo}`}>Cinematika</h1>
                 </a>
                 <div className="movie__search">
                     <input
@@ -53,6 +69,15 @@ function App() {
                     />
                     <span className="movie__search__input--bg"/>
                 </div>
+                <input
+                    type="checkbox"
+                    id="theme-toggle"
+                    className="app__toggle-theme--checkbox"
+                    onClick={toggleTheme}
+                />
+                <label htmlFor="theme-toggle" className="app__toggle-theme--label">
+                    <span className="app__toggle-theme--toggle"/>
+                </label>
             </div>
             {
                 movies?.length > 0 ? (
