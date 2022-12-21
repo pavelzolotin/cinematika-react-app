@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
 
 import MovieCard from './components/MovieCard'
+import MoonIcon from './moon-icon.svg'
+import SunIcon from './sun-warm-icon.svg'
 import './index.scss'
 
 const API_URL = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
@@ -76,6 +78,16 @@ function App() {
                     onClick={toggleTheme}
                 />
                 <label htmlFor="theme-toggle" className="app__toggle-theme--label">
+                    <img
+                        className="app__toggle-theme--icon"
+                        src={MoonIcon}
+                        alt=""
+                    />
+                    <img
+                        className="app__toggle-theme--icon"
+                        src={SunIcon}
+                        alt=""
+                    />
                     <span className="app__toggle-theme--toggle"/>
                 </label>
             </div>
