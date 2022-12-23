@@ -1,4 +1,6 @@
 const MovieCard = ({movie: {kinopoiskId, year, posterUrlPreview, nameRu, genres}}) => {
+    const movieGenres = genres.map(genre => ` ${genre.genre}`).join(',')
+
     return (
         <div className="movie" key={kinopoiskId}>
             <div className="movie__year">
@@ -12,7 +14,7 @@ const MovieCard = ({movie: {kinopoiskId, year, posterUrlPreview, nameRu, genres}
             </div>
             <div className="movie__text">
                 <h3 className="movie__title">{nameRu}</h3>
-                <span className="movie__genre">{genres.map(genre => ` ${genre.genre}`)}</span>
+                <span className="movie__genre">{movieGenres}</span>
             </div>
         </div>
     )
