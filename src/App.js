@@ -1,9 +1,8 @@
 import {useState, useEffect} from 'react'
 
 import MovieCard from './components/MovieCard'
+import Header from './components/Header'
 
-import MoonIcon from "./moon-icon.svg";
-import SunIcon from "./sun-warm-icon.svg";
 import './index.scss'
 
 const API_URL = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
@@ -74,50 +73,14 @@ function App() {
 
     return (
         <div className={`app ${themeMode}`}>
-            <div className="app__header">
-                <a href="/" className="app__logo">
-                    <h1 className={`app__title ${logo}`}>Cinematika</h1>
-                </a>
-                <div className="movie__search">
-                    <input
-                        className="movie__search__input"
-                        placeholder="Type anything"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    {
-                        searchTerm ? (
-                            <span
-                                className="movie__search__input--clear"
-                                onClick={clearSearchInput}
-                            >
-                                x
-                            </span>
-                        ) : null
-                    }
-                    <span className="movie__search__input--bg"/>
-                </div>
-                <input
-                    type="checkbox"
-                    id="theme-toggle"
-                    className="app__toggle-theme--checkbox"
-                    onChange={() => toggleTheme()}
-                    checked={toggleIsClicked}
-                />
-                <label htmlFor="theme-toggle" className="app__toggle-theme--label">
-                    <img
-                        className="app__toggle-theme--icon"
-                        src={MoonIcon}
-                        alt=""
-                    />
-                    <img
-                        className="app__toggle-theme--icon"
-                        src={SunIcon}
-                        alt=""
-                    />
-                    <span className="app__toggle-theme--toggle"/>
-                </label>
-            </div>
+            <Header
+            logo={logo}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            clearSearchInput={clearSearchInput}
+            toggleTheme={toggleTheme}
+            toggleIsClicked={toggleIsClicked}
+            />
             {
                 movies?.length > 0 ? (
                     <div className="movie__card-box">
