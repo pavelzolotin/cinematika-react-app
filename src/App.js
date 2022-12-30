@@ -1,12 +1,14 @@
 import {useState, useEffect} from 'react'
 
 import MovieCard from './components/MovieCard'
-import MoonIcon from './moon-icon.svg'
-import SunIcon from './sun-warm-icon.svg'
+
+import MoonIcon from "./moon-icon.svg";
+import SunIcon from "./sun-warm-icon.svg";
 import './index.scss'
 
 const API_URL = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
 const API_SEARCH = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword='
+//const API_ID = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/'
 const options = {
     method: 'GET',
     headers: {
@@ -16,11 +18,18 @@ const options = {
 }
 
 function App() {
-    const [theme, setTheme] = useState('dark')
-    const [logo, setLogoColor] = useState('lighten')
     const [movies, setMovies] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
     const searchResult = `${API_SEARCH}${searchTerm}`
+
+    const [theme, setTheme] = useState(
+        localStorage.getItem('theme') || 'dark'
+    )
+    const [logo, setLogoColor] = useState(
+        localStorage.getItem('logo') || 'lighten'
+    )
+    const themeMode = theme === 'dark' ? 'dark-mode' : 'light-mode'
+    const toggleIsClicked = theme === 'light' ? true : ''
 
     const toggleTheme = () => {
         if (theme === 'dark') {
@@ -44,7 +53,14 @@ function App() {
             })
     }
 
+    const clearSearchInput = () => {
+        setSearchTerm('')
+        getMovies(API_URL)
+    }
+
     useEffect(() => {
+        localStorage.setItem('theme', theme)
+        localStorage.setItem('logo', logo)
         document.body.className = theme
     }, [theme, logo])
 
@@ -57,7 +73,7 @@ function App() {
     }, [searchTerm, searchResult])
 
     return (
-        <div className={`app ${theme}`}>
+        <div className={`app ${themeMode}`}>
             <div className="app__header">
                 <a href="/" className="app__logo">
                     <h1 className={`app__title ${logo}`}>Cinematika</h1>
@@ -69,13 +85,24 @@ function App() {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
+                    {
+                        searchTerm ? (
+                            <span
+                                className="movie__search__input--clear"
+                                onClick={clearSearchInput}
+                            >
+                                x
+                            </span>
+                        ) : null
+                    }
                     <span className="movie__search__input--bg"/>
                 </div>
                 <input
                     type="checkbox"
                     id="theme-toggle"
                     className="app__toggle-theme--checkbox"
-                    onClick={toggleTheme}
+                    onChange={() => toggleTheme()}
+                    checked={toggleIsClicked}
                 />
                 <label htmlFor="theme-toggle" className="app__toggle-theme--label">
                     <img

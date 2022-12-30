@@ -201,6 +201,14 @@ a {
         border: .2rem solid #7e7e7e;
         transition: border .3s ease;
       }
+
+      &--clear {
+        position: absolute;
+        top: 2.1rem;
+        right: 2.5rem;
+        color: #7e7e7e;
+        cursor: pointer;
+      }
     }
 
     &__input ~ &__input--bg {
