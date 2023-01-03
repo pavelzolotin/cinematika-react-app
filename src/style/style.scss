@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+:root {
+  /** sunny side **/
+  --blue-border: #72cce3;
+  --blue-color: #96dcee;
+  --yellow-background: #fffaa8;
+  --yellow-border: #f5eb71;
+  /** dark side **/
+  --indigo-border: #5d6baa;
+  --indigo-color: #6b7abb;
+  --gray-border: #e8e8ea;
+  --gray-dots: #e8e8ea;
+  /** general **/
+  --white: #fff;
+}
+
+/* base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font-unbounded: "Unbounded", cursive;
+  --font-play: "Play", sans-serif;
+}
+
+body {
+  font-family: var(--font-unbounded);
+  background-color: #212426;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: .5rem .5rem .5rem -.5rem rgba(34, 60, 80, 0.2) inset;
+  background-color: #212426;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #343739;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: .5rem .5rem .5rem -.5rem rgba(34, 60, 80, 0.2) inset;
+  background-color: #212426;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #343739;
+}
+
+a {
+  text-decoration: none;
+}

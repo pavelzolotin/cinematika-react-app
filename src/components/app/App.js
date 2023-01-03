@@ -74,12 +74,12 @@ function App() {
     return (
         <div className={`app ${themeMode}`}>
             <Header
-            logo={logo}
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            clearSearchInput={clearSearchInput}
-            toggleTheme={toggleTheme}
-            toggleIsClicked={toggleIsClicked}
+                logo={logo}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                clearSearchInput={clearSearchInput}
+                toggleTheme={toggleTheme}
+                toggleIsClicked={toggleIsClicked}
             />
             {
                 movies?.length > 0 ? (
