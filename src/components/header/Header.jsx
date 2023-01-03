@@ -1,6 +1,7 @@
-import Logo from './Logo'
-import Search from './Search'
-import ToggleMode from './ToggleMode'
+import Logo from '../logo/Logo'
+import Search from '../search/Search'
+import ToggleMode from '../toggleMode/ToggleMode'
+import './header.scss'
 
 const Header = ({logo, searchTerm, setSearchTerm, clearSearchInput, toggleTheme, toggleIsClicked}) => {
     return (

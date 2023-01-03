@@ -1,0 +1,26 @@
+.app {
+  &__title {
+    width: fit-content;
+    font-size: 3rem;
+    letter-spacing: .9rem;
+    text-transform: uppercase;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .app {
+    &__header {
+      flex-direction: column;
+    }
+  }
+}

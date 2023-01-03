@@ -1,5 +1,6 @@
-import MoonIcon from '../moon-icon.svg'
-import SunIcon from '../sun-warm-icon.svg'
+import MoonIcon from '../../img/moon-icon.svg'
+import SunIcon from '../../img/sun-warm-icon.svg'
+import './toggleMode.scss'
 
 const ToggleMode = ({toggleTheme, toggleIsClicked}) => {
     return (

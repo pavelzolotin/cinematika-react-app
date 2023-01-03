@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react'
 
-import MovieCard from './components/MovieCard'
-import Header from './components/Header'
+import MovieCard from '../movieCard/MovieCard'
+import Header from '../header/Header'
 
-import './index.scss'
+import './app.scss'
 
 const API_URL = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1'
 const API_SEARCH = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword='

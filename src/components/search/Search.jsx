@@ -1,3 +1,5 @@
+import './search.scss'
+
 const Search = ({searchTerm, setSearchTerm, clearSearchInput}) => {
     return (
         <div className="movie__search">

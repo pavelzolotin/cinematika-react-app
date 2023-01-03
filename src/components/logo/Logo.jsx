@@ -1,3 +1,5 @@
+import './logo.scss'
+
 const Logo = ({logo}) => {
     return (
         <a href="/" className="app__logo">

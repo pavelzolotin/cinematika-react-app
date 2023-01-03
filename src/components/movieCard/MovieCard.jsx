@@ -1,3 +1,5 @@
+import './movieCard.scss'
+
 const MovieCard = ({movie: {filmId, year, posterUrlPreview, nameRu, genres}}) => {
     const movieGenres = genres.map(genre => ` ${genre.genre}`).join(',')
 
