@@ -1,25 +1,32 @@
 import './search.scss'
 
-const Search = ({searchTerm, setSearchTerm, clearSearchInput}) => {
+const Search = ({fetchMovies, searchKey, setSearchKey}) => {
+
+    const clearSearchInput = () => {
+        setSearchKey('')
+    }
+
     return (
         <div className="movie__search">
-            <input
-                className="movie__search__input"
-                placeholder="Type anything"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            {
-                searchTerm ? (
-                    <span
-                        className="movie__search__input--clear"
-                        onClick={clearSearchInput}
-                    >
+            <form onSubmit={fetchMovies}>
+                <input
+                    className="movie__search__input"
+                    placeholder="Type anything"
+                    value={searchKey}
+                    onChange={(e) => setSearchKey(e.target.value)}
+                />
+                {
+                    searchKey ? (
+                        <span
+                            className="movie__search__input--clear"
+                            onClick={clearSearchInput}
+                        >
                                 x
                             </span>
-                ) : null
-            }
-            <span className="movie__search__input--bg"/>
+                    ) : null
+                }
+                <span className="movie__search__input--bg"/>
+            </form>
         </div>
     )
 }

@@ -1,22 +1,28 @@
 import './movieCard.scss'
 
-const MovieCard = ({movie: {filmId, year, posterUrlPreview, nameRu, genres}}) => {
-    const movieGenres = genres.map(genre => ` ${genre.genre}`).join(',')
+const MovieCard = ({movie}) => {
+    const imagePath = 'https://image.tmdb.org/t/p/w500'
+    const year = movie.release_date.substring(0, 4)
+    const range = movie.vote_average.toString().length
+    const rangeResult = range === 2 || range === 1 ? movie.vote_average + '.0' : movie.vote_average
 
     return (
-        <div className="movie" key={filmId}>
+        <div className="movie">
             <div className="movie__year">
-                <p>{year}</p>
+                {year}
+            </div>
+            <div className="movie__range">
+                {rangeResult}
             </div>
             <div className="movie__image">
-                <img
-                    src={posterUrlPreview !== 'N/A' ? posterUrlPreview : 'https://via.placeholder.com/400'}
-                    alt={nameRu}
-                />
+                {
+                    movie.poster_path
+                        ? <img src={`${imagePath}${movie.poster_path}`} alt={movie.title}/>
+                        : null
+                }
             </div>
             <div className="movie__text">
-                <h3 className="movie__title">{nameRu}</h3>
-                <span className="movie__genre">{movieGenres}</span>
+                <h3 className="movie__title">{movie.title}</h3>
             </div>
         </div>
     )
