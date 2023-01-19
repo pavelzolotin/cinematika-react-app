@@ -1,7 +1,5 @@
 import {useEffect, useState} from 'react'
 
-// import axios from 'axios'
-// import {API_KEY, SEARCH_API} from '../../src/utils/constants'
 import {fetchFromAPI} from '../../utils/fetchFromAPI'
 
 import MoonIcon from '../../img/moon-icon.svg'
@@ -27,11 +25,6 @@ const Header = ({searchKey, setSearchKey, setMovies}) => {
         }
     }
 
-    const onSearchSubmit = (e) => {
-        e.preventDefault()
-        fetchFromAPI(searchKey, setMovies)
-    }
-
     const clearSearchInput = () => {
         setSearchKey('')
     }
@@ -43,13 +36,21 @@ const Header = ({searchKey, setSearchKey, setMovies}) => {
         document.body.className = theme
     }, [theme, logo, headerBg])
 
+    useEffect(() => {
+        fetchFromAPI(searchKey, setMovies)
+
+        if (searchKey.length >= 1) {
+            window.scrollTo(0, 0)
+        }
+    }, [searchKey])
+
     return (
         <div className={`app__header ${headerBg}`}>
             <a href="/" className="app__logo">
                 <h1 className={`app__title ${logo}`}>Cinematika</h1>
             </a>
             <div className="movie__search">
-                <form onSubmit={onSearchSubmit}>
+                <form>
                     <input
                         type="text"
                         className="movie__search__input"
