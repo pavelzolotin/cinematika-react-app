@@ -9,6 +9,46 @@
     max-width: 132rem;
     margin-top: 150px;
   }
+
+  &__toggle-theme--checkbox {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__toggle-theme--label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    border: 0.2rem solid #343739;
+    background-color: #212426;
+    width: 5.5rem;
+    height: 2.6rem;
+    border-radius: 5rem;
+    padding: .7rem;
+    cursor: pointer;
+  }
+
+  &__toggle-theme--label &__toggle-theme--toggle {
+    position: absolute;
+    width: 2.2rem;
+    height: 2.2rem;
+    left: .2rem;
+    top: 0;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform .2s linear;
+  }
+
+  &__toggle-theme--checkbox:checked + &__toggle-theme--label &__toggle-theme--toggle {
+    transform: translateX(2.8rem);
+  }
+
+  &__toggle-theme--icon {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
