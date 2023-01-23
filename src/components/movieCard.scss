@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  margin-top: 8rem;
   position: relative;
+  width: 100%;
+  margin-top: 11rem;
 
   &__intro {
     width: 85%;
@@ -24,9 +24,8 @@
   &__details {
     display: flex;
     align-items: center;
-    position: relative;
     width: 75%;
-    bottom: 23rem;
+    margin-top: -25rem;
     background: rgba(33, 36, 38, 0.7);
     box-shadow: rgba(17, 17, 17, 50%) 0 1rem 1rem .5rem;
     border-radius: 1rem;
@@ -47,7 +46,7 @@
     flex-direction: column;
     padding: 2rem;
     color: white;
-    height: 45rem;
+    height: 100%;
   }
 
   &__details--right > div {
@@ -67,8 +66,13 @@
   }
 
   &__rating {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
+  }
+
+  &__vote-average {
+    font-size: 2rem;
+    margin-right: .5rem;
   }
 
   &__vote-count {
@@ -82,18 +86,18 @@
 
   &__release-date {
     font-size: 1.8rem;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
   }
 
   &__genres {
-    font-size: 1.8rem;
     margin-bottom: 3rem;
   }
 
   &__genre {
-    padding: .5rem;
-    margin-right: 1rem;
-    border: 2px solid white;
+    padding: .8rem 1.8rem;
+    margin-right: 1.2rem;
+    font-size: 1.6rem;
+    background-color: rgba(245, 245, 245, .1);
     border-radius: 2rem;
   }
 
@@ -148,7 +152,7 @@
     flex-wrap: wrap;
     width: 100%;
     max-width: 132rem;
-    margin-top: 18rem;
+    margin: 20rem 0 10rem 0;
   }
 
   &__year {
@@ -207,7 +211,6 @@
   span {
     font-family: var(--font-play);
     text-transform: uppercase;
-    font-size: 1.4rem;
     letter-spacing: .2rem;
     font-weight: 500;
     color: #b7b7b7;
@@ -274,6 +277,23 @@
         font-family: var(--font-play);
         font-size: 2rem;
       }
+    }
+  }
+
+  &__btn-return {
+    margin: 7rem 0 10rem 0;
+    padding: 1.5rem 5rem;
+    background-color: rgba(33, 36, 38, 1);
+    color: #b7b7b7;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border-radius: 1rem;
+    border: 3px solid #b7b7b7;
+
+    &:hover {
+      border: 3px solid #e9c7aa;
+      background-color: rgba(33, 36, 38, .7);
     }
   }
 }
