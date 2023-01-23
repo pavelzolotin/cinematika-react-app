@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 
-import Skeleton from '../skeleton/Skeleton'
-import './movieCard.scss'
+import Skeleton from './Skeleton'
+import '../components/movieCard.scss'
 
 const MovieCard = ({movie}) => {
     const [isLoading, setIsLoading] = useState(true)
@@ -15,7 +15,7 @@ const MovieCard = ({movie}) => {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false)
-        }, 1500)
+        }, 2000)
     }, [])
 
     return (

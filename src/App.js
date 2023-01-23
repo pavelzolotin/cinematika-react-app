@@ -2,7 +2,7 @@ import {useState} from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import Home from './pages/Home'
-import Header from './components/header/Header'
+import Header from './components/Header'
 import MovieDetails from './components/MovieDetails'
 
 import './app.scss'

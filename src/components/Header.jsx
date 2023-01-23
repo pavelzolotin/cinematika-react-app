@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react'
 
-import {fetchMovies} from '../../utils/fetchFromAPI'
+import {fetchMovies} from '../utils/fetchFromAPI'
 
-import MoonIcon from '../../img/moon-icon.svg'
-import SunIcon from '../../img/sun-warm-icon.svg'
-import './header.scss'
+import MoonIcon from '../img/moon-icon.svg'
+import SunIcon from '../img/sun-warm-icon.svg'
+import '../components/header.scss'
 
 const Header = ({searchTerm, setSearchTerm, setMovies}) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
