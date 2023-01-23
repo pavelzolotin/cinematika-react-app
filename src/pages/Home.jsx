@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react'
 
-import {fetchFromAPI} from '../../src/utils/fetchFromAPI'
+import {fetchMovies} from '../utils/fetchFromAPI'
 import MovieCard from '../components/movieCard/MovieCard'
 
-const Home = ({searchKey, movies, setMovies}) => {
+const Home = ({searchTerm, movies, setMovies}) => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         setIsLoading(true)
-        fetchFromAPI(searchKey, setMovies)
+        fetchMovies(searchTerm, setMovies)
             .then(() => setIsLoading(false))
     }, [setIsLoading])
 

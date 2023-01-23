@@ -1,13 +1,12 @@
 import {useEffect, useState} from 'react'
 
-import {fetchFromAPI} from '../../utils/fetchFromAPI'
+import {fetchMovies} from '../../utils/fetchFromAPI'
 
 import MoonIcon from '../../img/moon-icon.svg'
 import SunIcon from '../../img/sun-warm-icon.svg'
 import './header.scss'
 
-
-const Header = ({searchKey, setSearchKey, setMovies}) => {
+const Header = ({searchTerm, setSearchTerm, setMovies}) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
     const [logo, setLogoColor] = useState(localStorage.getItem('logo') || 'lighten')
     const [headerBg, setHeaderBg] = useState(localStorage.getItem('header') || 'dark')
@@ -26,7 +25,7 @@ const Header = ({searchKey, setSearchKey, setMovies}) => {
     }
 
     const clearSearchInput = () => {
-        setSearchKey('')
+        setSearchTerm('')
     }
 
     useEffect(() => {
@@ -37,12 +36,12 @@ const Header = ({searchKey, setSearchKey, setMovies}) => {
     }, [theme, logo, headerBg])
 
     useEffect(() => {
-        fetchFromAPI(searchKey, setMovies)
+        fetchMovies(searchTerm, setMovies)
 
-        if (searchKey.length >= 1) {
+        if (searchTerm.length >= 1) {
             window.scrollTo(0, 0)
         }
-    }, [searchKey])
+    }, [searchTerm])
 
     return (
         <div className={`app__header ${headerBg}`}>
@@ -55,17 +54,15 @@ const Header = ({searchKey, setSearchKey, setMovies}) => {
                         type="text"
                         className="movie__search__input"
                         placeholder="Type anything"
-                        value={searchKey}
-                        onChange={(e) => setSearchKey(e.target.value)}
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     {
-                        searchKey ? (
+                        searchTerm ? (
                             <span
                                 className="movie__search__input--clear"
                                 onClick={clearSearchInput}
-                            >
-                                x
-                            </span>
+                            >x</span>
                         ) : null
                     }
                     <span className="movie__search__input--bg"/>
