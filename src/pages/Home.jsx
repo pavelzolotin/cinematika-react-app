@@ -1,7 +1,18 @@
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
+import styled from 'styled-components'
 
 import {fetchMovies} from '../utils/fetchFromAPI'
 import MovieCard from '../components/MovieCard'
+
+const CardBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 132rem;
+  margin: 20rem 0 10rem 0;
+`
 
 const Home = ({searchTerm, movies, setMovies}) => {
 
@@ -10,7 +21,7 @@ const Home = ({searchTerm, movies, setMovies}) => {
     })
 
     return (
-        <div className="movie__card-box">
+        <CardBox>
             {
                 movies.map(movie => (
                     <MovieCard
@@ -19,7 +30,7 @@ const Home = ({searchTerm, movies, setMovies}) => {
                     />
                 ))
             }
-        </div>
+        </CardBox>
     )
 }
 
