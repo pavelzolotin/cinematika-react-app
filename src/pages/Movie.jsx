@@ -4,7 +4,7 @@ import {useParams, Link} from 'react-router-dom'
 import styled from 'styled-components'
 import StarIcon from '@mui/icons-material/Star'
 
-const Movie = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,13 +115,13 @@ const ButtonReturn = styled.button`
   }
 `
 
-const MovieDetails = () => {
+const Movie = () => {
     const [currentMovieDetail, setMovie] = useState([])
     const {id} = useParams()
 
     useEffect(() => {
         fetchMovie()
-    }, [])
+    })
 
     const fetchMovie = () => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=65f253fe48c848a16245196fd36824d8&language=en-US`)
@@ -130,7 +130,7 @@ const MovieDetails = () => {
     }
 
     return (
-        <Movie>
+        <Container>
             <Intro>
                 <Backdrop
                     src={`https://image.tmdb.org/t/p/original${currentMovieDetail ? currentMovieDetail.backdrop_path : ""}`}
@@ -190,8 +190,8 @@ const MovieDetails = () => {
             <Link to={'/'}>
                 <ButtonReturn>Return</ButtonReturn>
             </Link>
-        </Movie>
+        </Container>
     )
 }
 
-export default MovieDetails
+export default Movie

@@ -2,9 +2,10 @@ import {useState} from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import styled, {ThemeProvider, createGlobalStyle} from 'styled-components'
 
-import Home from './pages/Home'
 import Header from './components/Header'
-import MovieDetails from './components/MovieDetails'
+import Home from './pages/Home'
+import Movie from './pages/Movie'
+import MovieList from './components/MovieList'
 
 import {darkTheme, lightTheme} from './utils/Theme'
 
@@ -67,7 +68,6 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${({theme}) => theme.color};
   }
 `
 const Container = styled.div`
@@ -87,29 +87,35 @@ function App() {
         <ThemeProvider
             theme={theme === 'dark' ? darkTheme : lightTheme}
         >
-        <BrowserRouter>
-            <GlobalStyle/>
-            <Container>
-                <Header
-                    searchTerm={searchTerm}
-                    setSearchTerm={setSearchTerm}
-                    setMovies={setMovies}
-                    theme={theme}
-                    setTheme={setTheme}
-                />
-                <Routes>
-                    <Route path="/" element={
-                        <Home
-                            searchTerm={searchTerm}
-                            movies={movies}
-                            setMovies={setMovies}
-                        />
-                    }/>
-                    <Route path="movie/:id" element={<MovieDetails/>}/>
-                </Routes>
-            </Container>
-        </BrowserRouter>
-            </ThemeProvider>
+            <BrowserRouter>
+                <GlobalStyle/>
+                <Container>
+                    <Header
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                        setMovies={setMovies}
+                        theme={theme}
+                        setTheme={setTheme}
+                    />
+                    <Routes>
+                        <Route path="/" element={
+                            <Home
+                                searchTerm={searchTerm}
+                                movies={movies}
+                                setMovies={setMovies}
+                            />
+                        }/>
+                        <Route path="movie/:id" element={<Movie/>}/>
+                        <Route path="movies/:type" element={
+                            <MovieList
+                                movies={movies}
+                                setMovies={setMovies}
+                            />
+                        }/>
+                    </Routes>
+                </Container>
+            </BrowserRouter>
+        </ThemeProvider>
     )
 }
 

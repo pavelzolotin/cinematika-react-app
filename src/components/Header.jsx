@@ -1,5 +1,5 @@
-import {useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {useEffect, useState} from 'react'
+import {Link, NavLink} from 'react-router-dom'
 import styled from 'styled-components'
 
 import {fetchMovies} from '../utils/fetchFromAPI'
@@ -25,6 +25,19 @@ const Logo = styled.div`
   text-decoration: none;
 `
 const Img = styled.img``
+const Nav = styled.div``
+const Tab = styled.button`
+  margin: 0 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-decoration: none;
+  background-color: transparent;
+  color: ${({theme}) => theme.color};
+  border: none;
+  outline: none;
+  cursor: pointer;
+`
 const MovieSearch = styled.div`
   width: 25%;
   margin: 3rem 4rem;
@@ -42,20 +55,6 @@ const Input = styled.input`
   background: transparent;
   transition: border .3s ease;
 
-  &:focus-visible {
-    outline: none;
-    border: .2rem solid #7e7e7e;
-    transition: border .3s ease;
-  }
-`
-const InputClear = styled.span`
-  position: absolute;
-  top: 2.1rem;
-  right: 2.5rem;
-  color: #7e7e7e;
-  cursor: pointer;
-`
-const InputBg = styled.span`
   & ~ .movie__input--bg {
     position: absolute;
     top: 0;
@@ -69,7 +68,27 @@ const InputBg = styled.span`
     z-index: -1;
   }
 
+  &:focus-visible {
+    outline: none;
+    border: .2rem solid #7e7e7e;
+    transition: border .3s ease;
+  }
+
   &:focus ~ .movie__input--bg {
+    transition: .5s;
+    opacity: 1;
+    outline: none;
+  }
+`
+const InputClear = styled.span`
+  position: absolute;
+  top: 2.1rem;
+  right: 2.5rem;
+  color: #7e7e7e;
+  cursor: pointer;
+`
+const InputBg = styled.span`
+  &:focus {
     transition: .5s;
     opacity: 1;
     outline: none;
@@ -159,12 +178,22 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
                     />
                 </Logo>
             </Link>
+            <Nav>
+                <NavLink to="/movies/popular" style={({ isActive }) => isActive ? {opacity: '1'} : {opacity: '0.6'}}>
+                    <Tab>Popular</Tab>
+                </NavLink>
+                <NavLink to="/movies/top_rated" style={({ isActive }) => isActive ? {opacity: '1'} : {opacity: '0.6'}}>
+                    <Tab>Top Rated</Tab>
+                </NavLink>
+                <NavLink to="/movies/upcoming" style={({ isActive }) => isActive ? {opacity: '1'} : {opacity: '0.6'}}>
+                    <Tab>Upcoming</Tab>
+                </NavLink>
+            </Nav>
             <MovieSearch>
                 <Form>
                     <Input
                         type="text"
-                        className="movie__input--bg"
-                        placeholder="Type anything"
+                        placeholder="Search"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -176,7 +205,7 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
                             </InputClear>
                         ) : null
                     }
-                    <InputBg/>
+                    <InputBg className="movie__input--bg"/>
                 </Form>
             </MovieSearch>
             <ToggleInput
