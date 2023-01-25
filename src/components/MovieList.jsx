@@ -18,7 +18,7 @@ const CardBox = styled.div`
   flex-wrap: wrap;
   width: 100%;
   max-width: 132rem;
-  margin: 0 0 10rem 0;
+  margin: 0 0 7rem 0;
 `
 const Title = styled.h3`
   font-size: 2rem;
