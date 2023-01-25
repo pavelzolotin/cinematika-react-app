@@ -1,8 +1,13 @@
 # Cinematika
 
-This is a test project in building an application with cards about movies uploaded using the API.
+Movie App project with cards about movies received from API.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Stack:
+React
+React Router v6
+Axios
+Styled-components
+Material UI
 
 ## Available Scripts
 
