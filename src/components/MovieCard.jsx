@@ -47,14 +47,16 @@ const Rating = styled.div`
   top: 0;
   right: 0;
   padding: 2rem;
-  font-size: 1.6rem;
+  font-size: 2rem;
+  font-weight: 600;
   color: #f9d3b4;
+  z-index: 1;
   opacity: 0;
 
   &:before {
     position: absolute;
     content: "";
-    background-color: #7e7e7e;
+    background-color: #343739;
     width: 100%;
     height: 100%;
     border-radius: 0 0 0 5px;
@@ -78,7 +80,7 @@ const Text = styled.div`
   right: 0;
   left: 0;
   bottom: 0;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: .7rem 2rem .7rem 2rem;
   background-color: #343739;
   z-index: 2;
 `

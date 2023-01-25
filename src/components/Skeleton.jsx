@@ -6,12 +6,12 @@ function Skeleton() {
             speed={2}
             width={300}
             height={500}
-            viewBox="0 0 285 500"
+            viewBox="0 0 300 500"
             backgroundColor="#817c7c"
             foregroundColor="#444444d4"
         >
-            <rect x="5" y="25" rx="10" ry="10" width="275" height="320"/>
-            <rect x="5" y="375" rx="10" ry="10" width="275" height="60"/>
+            <rect x="0" y="0" rx="10" ry="0" width="300" height="340"/>
+            <rect x="0" y="390" rx="0" ry="10" width="300" height="60"/>
         </ContentLoader>
     )
 }
