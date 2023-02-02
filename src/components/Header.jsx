@@ -159,7 +159,7 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
 
     useEffect(() => {
         localStorage.setItem('theme', theme);
-    }, [theme])
+    }, [theme]);
 
     useEffect(() => {
         fetchMovies(searchTerm, setMovies);
@@ -167,7 +167,7 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
         if (searchTerm.length >= 1) {
             window.scrollTo(0, 0);
         }
-    }, [searchTerm])
+    }, [searchTerm]);
 
     return (
         <Container>

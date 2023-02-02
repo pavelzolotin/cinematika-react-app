@@ -18,7 +18,7 @@ const Home = ({searchTerm, movies, setMovies}) => {
 
     useEffect(() => {
         fetchMovies(searchTerm, setMovies);
-    })
+    });
 
     return (
         <CardBox>

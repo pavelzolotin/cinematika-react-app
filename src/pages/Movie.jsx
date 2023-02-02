@@ -121,7 +121,7 @@ const Movie = () => {
 
     useEffect(() => {
         fetchMovie();
-    })
+    });
 
     const fetchMovie = () => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=65f253fe48c848a16245196fd36824d8&language=en-US`)

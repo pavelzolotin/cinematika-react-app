@@ -38,7 +38,7 @@ const MovieList = ({movies, setMovies}) => {
 
     useEffect(() => {
         fetchMovies();
-    }, [type])
+    }, [type]);
 
     return (
         <Container>

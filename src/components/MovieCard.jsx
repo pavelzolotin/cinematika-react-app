@@ -103,7 +103,7 @@ const MovieCard = ({movie}) => {
         setTimeout(() => {
             setIsLoading(false);
         }, 2000)
-    }, [])
+    }, []);
 
     return (
         <>
