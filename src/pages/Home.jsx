@@ -1,8 +1,8 @@
-import {useEffect} from 'react'
-import styled from 'styled-components'
+import {useEffect} from 'react';
+import styled from 'styled-components';
 
-import {fetchMovies} from '../utils/fetchFromAPI'
-import MovieList from '../components/MovieList'
+import {fetchMovies} from '../utils/fetchFromAPI';
+import MovieList from '../components/MovieList';
 
 const CardBox = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const CardBox = styled.div`
 const Home = ({searchTerm, movies, setMovies}) => {
 
     useEffect(() => {
-        fetchMovies(searchTerm, setMovies)
+        fetchMovies(searchTerm, setMovies);
     })
 
     return (
@@ -27,7 +27,7 @@ const Home = ({searchTerm, movies, setMovies}) => {
                 setMovies={setMovies}
             />
         </CardBox>
-    )
+    );
 }
 
-export default Home
+export default Home;

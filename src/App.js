@@ -1,13 +1,13 @@
-import {useState} from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import styled, {ThemeProvider, createGlobalStyle} from 'styled-components'
+import {useState} from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
 
-import Header from './components/Header'
-import Home from './pages/Home'
-import Movie from './pages/Movie'
-import MovieList from './components/MovieList'
+import Header from './components/Header';
+import Home from './pages/Home';
+import Movie from './pages/Movie';
+import MovieList from './components/MovieList';
 
-import {darkTheme, lightTheme} from './utils/Theme'
+import {darkTheme, lightTheme} from './utils/Theme';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -79,9 +79,9 @@ const Container = styled.div`
 `
 
 function App() {
-    const [movies, setMovies] = useState([])
-    const [searchTerm, setSearchTerm] = useState('')
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+    const [movies, setMovies] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
     return (
         <ThemeProvider
@@ -116,7 +116,7 @@ function App() {
                 </Container>
             </BrowserRouter>
         </ThemeProvider>
-    )
+    );
 }
 
-export default App
+export default App;

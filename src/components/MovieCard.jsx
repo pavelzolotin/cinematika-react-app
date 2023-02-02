@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
-import styled from 'styled-components'
+import {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
-import Skeleton from './Skeleton'
+import Skeleton from './Skeleton';
 
 const Card = styled.div`
   position: relative;
@@ -92,16 +92,16 @@ const Title = styled.h3`
 `
 
 const MovieCard = ({movie}) => {
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true);
 
-    const imagePath = 'https://image.tmdb.org/t/p/original'
-    const year = movie.release_date.substring(0, 4)
-    const range = movie.vote_average.toString().length
-    const rangeResult = range === 2 || range === 1 ? movie.vote_average + '.0' : movie.vote_average
+    const imagePath = 'https://image.tmdb.org/t/p/original';
+    const year = movie.release_date.substring(0, 4);
+    const range = movie.vote_average.toString().length;
+    const rangeResult = range === 2 || range === 1 ? movie.vote_average + '.0' : movie.vote_average;
 
     useEffect(() => {
         setTimeout(() => {
-            setIsLoading(false)
+            setIsLoading(false);
         }, 2000)
     }, [])
 
@@ -138,7 +138,7 @@ const MovieCard = ({movie}) => {
                     </Link>
             }
         </>
-    )
+    );
 }
 
-export default MovieCard
+export default MovieCard;

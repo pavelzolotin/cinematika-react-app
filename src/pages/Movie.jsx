@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useEffect, useState} from 'react';
+import {useParams, Link} from 'react-router-dom';
 
-import styled from 'styled-components'
-import StarIcon from '@mui/icons-material/Star'
+import styled from 'styled-components';
+import StarIcon from '@mui/icons-material/Star';
 
 const Container = styled.div`
   display: flex;
@@ -116,17 +116,17 @@ const ButtonReturn = styled.button`
 `
 
 const Movie = () => {
-    const [currentMovieDetail, setMovie] = useState([])
-    const {id} = useParams()
+    const [currentMovieDetail, setMovie] = useState([]);
+    const {id} = useParams();
 
     useEffect(() => {
-        fetchMovie()
+        fetchMovie();
     })
 
     const fetchMovie = () => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=65f253fe48c848a16245196fd36824d8&language=en-US`)
             .then(res => res.json())
-            .then(data => setMovie(data))
+            .then(data => setMovie(data));
     }
 
     return (
@@ -191,7 +191,7 @@ const Movie = () => {
                 <ButtonReturn>Return</ButtonReturn>
             </Link>
         </Container>
-    )
+    );
 }
 
-export default Movie
+export default Movie;

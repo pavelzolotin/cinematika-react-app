@@ -1,8 +1,8 @@
-import {useEffect} from 'react'
-import {useParams} from 'react-router-dom'
-import styled from 'styled-components'
+import {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+import styled from 'styled-components';
 
-import MovieCard from '../components/MovieCard'
+import MovieCard from '../components/MovieCard';
 
 const Container = styled.div`
   display: flex;
@@ -28,16 +28,16 @@ const Title = styled.h3`
 `
 
 const MovieList = ({movies, setMovies}) => {
-    const {type} = useParams()
+    const {type} = useParams();
 
     const fetchMovies = () => {
         fetch(`https://api.themoviedb.org/3/movie/${type ? type : 'popular'}?api_key=65f253fe48c848a16245196fd36824d8&language=en-US`)
             .then(res => res.json())
-            .then(data => setMovies(data.results))
+            .then(data => setMovies(data.results));
     }
 
     useEffect(() => {
-        fetchMovies()
+        fetchMovies();
     }, [type])
 
     return (
@@ -54,7 +54,7 @@ const MovieList = ({movies, setMovies}) => {
                 }
             </CardBox>
         </Container>
-    )
+    );
 }
 
-export default MovieList
+export default MovieList;

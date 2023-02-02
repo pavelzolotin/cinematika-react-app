@@ -1,4 +1,4 @@
-import ContentLoader from 'react-content-loader'
+import ContentLoader from 'react-content-loader';
 
 function Skeleton() {
     return (
@@ -13,7 +13,7 @@ function Skeleton() {
             <rect x="0" y="0" rx="10" ry="0" width="300" height="340"/>
             <rect x="0" y="390" rx="0" ry="10" width="300" height="60"/>
         </ContentLoader>
-    )
+    );
 }
 
-export default Skeleton
+export default Skeleton;

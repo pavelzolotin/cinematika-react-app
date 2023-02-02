@@ -1,13 +1,13 @@
-import {useEffect, useState} from 'react'
-import {Link, NavLink} from 'react-router-dom'
-import styled from 'styled-components'
+import {useEffect} from 'react';
+import {Link, NavLink} from 'react-router-dom';
+import styled from 'styled-components';
 
-import {fetchMovies} from '../utils/fetchFromAPI'
+import {fetchMovies} from '../utils/fetchFromAPI';
 
-import LogoDark from '../img/dark-logo.png'
-import LogoLight from '../img/light-logo.png'
-import MoonIcon from '../img/moon-icon.svg'
-import SunIcon from '../img/sun-warm-icon.svg'
+import LogoDark from '../img/dark-logo.png';
+import LogoLight from '../img/light-logo.png';
+import MoonIcon from '../img/moon-icon.svg';
+import SunIcon from '../img/sun-warm-icon.svg';
 
 const Container = styled.div`
   display: flex;
@@ -143,29 +143,29 @@ const Toggle = styled.span`
 `
 
 const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
-    const toggleIsClicked = theme === 'light' ? true : ''
+    const toggleIsClicked = theme === 'light' ? true : '';
 
     const toggleTheme = () => {
         if (theme === 'dark') {
-            setTheme('light')
+            setTheme('light');
         } else {
-            setTheme('dark')
+            setTheme('dark');
         }
     }
 
     const clearSearchInput = () => {
-        setSearchTerm('')
+        setSearchTerm('');
     }
 
     useEffect(() => {
-        localStorage.setItem('theme', theme)
+        localStorage.setItem('theme', theme);
     }, [theme])
 
     useEffect(() => {
-        fetchMovies(searchTerm, setMovies)
+        fetchMovies(searchTerm, setMovies);
 
         if (searchTerm.length >= 1) {
-            window.scrollTo(0, 0)
+            window.scrollTo(0, 0);
         }
     }, [searchTerm])
 
@@ -226,7 +226,7 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
                 <Toggle className="app__toggle-theme--toggle"/>
             </ToggleLabel>
         </Container>
-    )
+    );
 }
 
-export default Header
+export default Header;
