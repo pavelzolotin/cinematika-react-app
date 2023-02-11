@@ -6,40 +6,38 @@ import styled from 'styled-components';
 import StarIcon from '@mui/icons-material/Star';
 import {options} from '../utils/constants';
 
-const DummyText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   width: 100%;
-  margin-top: 11rem;
+  height: 100vh;
+  margin: 10rem 0 20rem 0;
 `;
 
 const Intro = styled.div`
-  width: 85%;
-
-  img {
-    border-radius: 0 0 1rem 1rem;
-  }
+  position: absolute;
+  width: 67rem;
+  right: 5rem;
 `;
 
 const Backdrop = styled.img`
   width: 100%;
-  height: 50rem;
   object-fit: cover;
-  object-position: 0 35%;
+  border-radius: 0 0 3rem 3rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.19), 0 .6rem .6rem rgba(0, 0, 0, 0.23);
 `;
 
 const Details = styled.div`
   display: flex;
   align-items: center;
   width: 75%;
-  margin-top: -25rem;
-  background: rgba(33, 36, 38, 0.7);
+  margin-top: 22rem;
+  background: rgba(33, 36, 38, 0.9);
   box-shadow: rgba(17, 17, 17, 50%) 0 1rem 1rem .5rem;
   border-radius: 1rem;
+  z-index: 1;
 `;
 
 const DetailsLeft = styled.div`
@@ -115,9 +113,12 @@ const ButtonReturn = styled.button`
   letter-spacing: 1.2px;
   border-radius: 1rem;
   border: 3px solid #b7b7b7;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.19), 0 .6rem .6rem rgba(0, 0, 0, 0.23);
+  cursor: pointer;
 
   &:hover {
     border: 3px solid #e9c7aa;
+    color: #e9c7aa;
     background-color: rgba(33, 36, 38, .7);
   }
 `;
@@ -144,7 +145,7 @@ const Movie = () => {
         <Container>
             <Intro>
                 <Backdrop
-                    src={currentMovieDetail.posterUrlPreview}
+                    src={currentMovieDetail.posterUrl}
                 />
             </Intro>
             <Details>
@@ -161,23 +162,23 @@ const Movie = () => {
                     </Name>
                     <Rating>
                         <VoteAverage>
-                            {currentMovieDetail ? currentMovieDetail.rating : ''}
+                            {currentMovieDetail ? currentMovieDetail.ratingKinopoisk : ''}
                         </VoteAverage>
                         <StarIcon/>
                     </Rating>
                     <ReleaseDate>
-                        {currentMovieDetail ? 'Release date: ' + currentMovieDetail.year : ''}
+                        {currentMovieDetail ? 'Дата выхода: ' + currentMovieDetail.year : ''}
                     </ReleaseDate>
                     <Genres>
                         {
                             currentMovieDetail && currentMovieDetail.genres
-                                ? currentMovieDetail.genres.map(genre => (
+                                ? currentMovieDetail.genres.map((genre, i) => (
                                     <>
                                         <Genre
-                                            key={genre.id}
-                                            id={genre.id}
+                                            key={i}
+                                            id={genre}
                                         >
-                                            {genre.name}
+                                            {genre.genre}
                                         </Genre>
                                     </>
                                 ))
@@ -185,12 +186,12 @@ const Movie = () => {
                         }
                     </Genres>
                     <Description>
-                        {DummyText}
+                        {currentMovieDetail ? currentMovieDetail.description : ''}
                     </Description>
                 </DetailsRight>
             </Details>
             <Link to={'/'}>
-                <ButtonReturn>Return</ButtonReturn>
+                <ButtonReturn>Вернуться</ButtonReturn>
             </Link>
         </Container>
     );

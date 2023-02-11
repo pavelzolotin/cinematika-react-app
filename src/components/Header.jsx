@@ -180,7 +180,7 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
                 <Form>
                     <Input
                         type="text"
-                        placeholder="Search"
+                        placeholder="Поиск"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
