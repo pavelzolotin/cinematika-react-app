@@ -92,10 +92,15 @@ const Input = styled.input`
 
 const InputClear = styled.span`
   position: absolute;
-  top: 2.1rem;
+  top: 1.9rem;
   right: 2.5rem;
+  font-size: 1.4rem;
   color: #7e7e7e;
   cursor: pointer;
+
+  @media (max-width: 767px) {
+    font-size: 1.6rem;
+  }
 `;
 
 const InputBg = styled.span`
@@ -179,6 +184,7 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
 
     const clearSearchInput = () => {
         setSearchTerm('');
+        window.scrollTo(0, 0);
     };
 
     useEffect(() => {
