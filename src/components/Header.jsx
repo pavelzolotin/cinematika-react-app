@@ -20,18 +20,35 @@ const Container = styled.div`
   background-color: ${({theme}) => theme.backgroundColor};
   transition: background-color .3s ease;
   z-index: 10;
+
+  @media (max-width: 767px) {
+    flex-direction: column-reverse;
+    padding-bottom: 1rem;
+  }
 `;
 
 const Logo = styled.div`
-  text-decoration: none;
+  @media (max-width: 767px) {
+    position: absolute;
+    top: .6rem;
+    left: .6rem;
+  }
 `;
-
-const Img = styled.img``;
+const Img = styled.img`
+  @media (max-width: 767px) {
+    width: 70%;
+  }
+`;
 
 const MovieSearch = styled.div`
   width: 25%;
   margin: 3rem 4rem;
   position: relative;
+
+  @media (max-width: 767px) {
+    width: 90%;
+    margin: 6rem 0 0 0;
+  }
 `;
 
 const Form = styled.form``;
@@ -89,9 +106,18 @@ const InputBg = styled.span`
   }
 `;
 
+const ToggleBox = styled.div`
+  @media (max-width: 767px) {
+    position: absolute;
+    right: 2rem;
+    top: 1.4rem;
+  }
+`;
+
 const ToggleInput = styled.input`
   position: absolute;
-  opacity: 0;
+  right: 0;
+  visibility: hidden;
 
   &:checked + .app__toggle-theme--label .app__toggle-theme--toggle {
     transform: translateX(2.8rem);
@@ -195,23 +221,25 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
                     <InputBg className="movie__input--bg"/>
                 </Form>
             </MovieSearch>
-            <ToggleInput
-                type="checkbox"
-                id="theme-toggle"
-                onChange={() => toggleTheme()}
-                checked={toggleIsClicked}
-            />
-            <ToggleLabel htmlFor="theme-toggle" className="app__toggle-theme--label">
-                <ToggleIcon
-                    src={MoonIcon}
-                    alt=""
+            <ToggleBox>
+                <ToggleInput
+                    type="checkbox"
+                    id="theme-toggle"
+                    onChange={() => toggleTheme()}
+                    checked={toggleIsClicked}
                 />
-                <ToggleIcon
-                    src={SunIcon}
-                    alt=""
-                />
-                <Toggle className="app__toggle-theme--toggle"/>
-            </ToggleLabel>
+                <ToggleLabel htmlFor="theme-toggle" className="app__toggle-theme--label">
+                    <ToggleIcon
+                        src={MoonIcon}
+                        alt=""
+                    />
+                    <ToggleIcon
+                        src={SunIcon}
+                        alt=""
+                    />
+                    <Toggle className="app__toggle-theme--toggle"/>
+                </ToggleLabel>
+            </ToggleBox>
         </Container>
     );
 };

@@ -12,6 +12,10 @@ const CardBox = styled.div`
   width: 100%;
   max-width: 132rem;
   margin: 18rem 0 7rem 0;
+
+  @media (max-width: 767px) {
+    margin: 15rem 0 0 0;
+  }
 `;
 
 const Home = ({searchTerm, movies, setMovies}) => {

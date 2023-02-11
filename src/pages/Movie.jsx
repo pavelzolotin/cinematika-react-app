@@ -14,12 +14,20 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
   margin: 10rem 0 20rem 0;
+
+  @media (max-width: 767px) {
+    margin: 17rem 0 0 0;
+  }
 `;
 
 const Intro = styled.div`
   position: absolute;
   width: 67rem;
   right: 5rem;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const Backdrop = styled.img`
@@ -38,10 +46,21 @@ const Details = styled.div`
   box-shadow: rgba(17, 17, 17, 50%) 0 1rem 1rem .5rem;
   border-radius: 1rem;
   z-index: 1;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.19), 0 .6rem .6rem rgba(0, 0, 0, 0.23);
+    margin: 0;
+  }
 `;
 
 const DetailsLeft = styled.div`
   margin-right: 3rem;
+
+  @media (max-width: 767px) {
+    margin: 0;
+  }
 `;
 
 const PosterBox = styled.div``;
@@ -50,6 +69,10 @@ const Poster = styled.img`
   width: 30rem;
   border-radius: 1rem;
   box-shadow: rgb(17, 17, 17, 85%) 0 2.2rem 4rem .6rem;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const DetailsRight = styled.div`
@@ -61,12 +84,22 @@ const DetailsRight = styled.div`
 
   & > div {
     text-shadow: 0 0 .5rem #222222;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 3rem 1.5rem 3rem 1.5rem;
+  }
 `;
 
 const Name = styled.div`
   font-weight: 600;
   font-size: 3.8rem;
   margin-bottom: 1.2rem;
+
+  @media (max-width: 767px) {
+    font-size: 2.6rem;
+  }
 `;
 
 const Rating = styled.div`
@@ -86,6 +119,11 @@ const ReleaseDate = styled.div`
 
 const Genres = styled.div`
   margin-bottom: 3rem;
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 const Genre = styled.span`
@@ -94,6 +132,10 @@ const Genre = styled.span`
   font-size: 1.6rem;
   background-color: rgba(245, 245, 245, .1);
   border-radius: 2rem;
+
+  @media (max-width: 767px) {
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const Description = styled.div`
@@ -101,6 +143,10 @@ const Description = styled.div`
   font-size: 1.8rem;
   letter-spacing: 1.2px;
   line-height: 1.7;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const ButtonReturn = styled.button`
