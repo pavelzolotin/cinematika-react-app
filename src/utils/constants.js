@@ -1,4 +1,9 @@
-export const API_KEY = '65f253fe48c848a16245196fd36824d8';
-export const MOVIE_API = 'https://api.themoviedb.org/3/';
-export const SEARCH_API = MOVIE_API + 'search/movie';
-export const DISCOVER_API = MOVIE_API + 'movie/popular';
+export const API_URL = 'https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1';
+export const API_SEARCH = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=';
+export const options = {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-API-KEY': '799e8cb3-e1e8-4fcf-aa99-bbb764d88980'
+    }
+};

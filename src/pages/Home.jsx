@@ -11,8 +11,8 @@ const CardBox = styled.div`
   flex-wrap: wrap;
   width: 100%;
   max-width: 132rem;
-  margin: 2rem 0 7rem 0;
-`
+  margin: 18rem 0 7rem 0;
+`;
 
 const Home = ({searchTerm, movies, setMovies}) => {
 
@@ -24,10 +24,9 @@ const Home = ({searchTerm, movies, setMovies}) => {
         <CardBox>
             <MovieList
                 movies={movies}
-                setMovies={setMovies}
             />
         </CardBox>
     );
-}
+};
 
 export default Home;

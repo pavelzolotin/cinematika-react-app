@@ -5,7 +5,6 @@ import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Movie from './pages/Movie';
-import MovieList from './components/MovieList';
 
 import {darkTheme, lightTheme} from './utils/Theme';
 
@@ -69,14 +68,15 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
-`
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
-`
+`;
 
 function App() {
     const [movies, setMovies] = useState([]);
@@ -105,13 +105,7 @@ function App() {
                                 setMovies={setMovies}
                             />
                         }/>
-                        <Route path="movie/:id" element={<Movie/>}/>
-                        <Route path="movies/:type" element={
-                            <MovieList
-                                movies={movies}
-                                setMovies={setMovies}
-                            />
-                        }/>
+                        <Route path="films/:id" element={<Movie/>}/>
                     </Routes>
                 </Container>
             </BrowserRouter>

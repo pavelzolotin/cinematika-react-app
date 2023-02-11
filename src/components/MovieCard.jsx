@@ -32,7 +32,8 @@ const Card = styled.div`
   &:hover .movie__range {
     opacity: 1;
   }
-`
+`;
+
 const Year = styled.div`
   position: absolute;
   top: 0;
@@ -41,7 +42,8 @@ const Year = styled.div`
   font-size: 2rem;
   opacity: 0;
   color: #f9d3b4;
-`
+`;
+
 const Rating = styled.div`
   position: absolute;
   top: 0;
@@ -64,7 +66,8 @@ const Rating = styled.div`
     top: 0;
     right: 0;
   }
-`
+`;
+
 const Image = styled.div`
   width: 100%;
   height: 100%;
@@ -74,7 +77,8 @@ const Image = styled.div`
     width: 100%;
     height: 100%;
   }
-`
+`;
+
 const Text = styled.div`
   position: absolute;
   right: 0;
@@ -83,27 +87,33 @@ const Text = styled.div`
   padding: .7rem 2rem .7rem 2rem;
   background-color: #343739;
   z-index: 2;
-`
+`;
+
 const Title = styled.h3`
   font-size: 2rem;
   margin: .5rem 0 1.5rem 0;
   font-family: var(--font-play);
   color: #f9d3b4;
-`
+`;
 
-const MovieCard = ({movie}) => {
+const Genres = styled.span`
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: .2rem;
+  font-weight: 500;
+  color: #b7b7b7;
+`;
+
+const MovieCard = ({movie: {filmId, year, posterUrlPreview, nameRu, rating, genres}}) => {
     const [isLoading, setIsLoading] = useState(true);
 
-    const imagePath = 'https://image.tmdb.org/t/p/original';
-    const year = movie.release_date.substring(0, 4);
-    const range = movie.vote_average.toString().length;
-    const rangeResult = range === 2 || range === 1 ? movie.vote_average + '.0' : movie.vote_average;
+    const movieGenres = genres.map(genre => ` ${genre.genre}`).join(',');
 
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
         }, 2000)
-    }, []);
+    });
 
     return (
         <>
@@ -113,32 +123,29 @@ const MovieCard = ({movie}) => {
                         <Skeleton/>
                     </Card>
                     :
-                    <Link to={`/movie/${movie.id}`}>
+                    <Link to={`/films/${filmId}`}>
                         <Card>
                             <Year className="movie__year">
                                 {year}
                             </Year>
                             <Rating className="movie__range">
-                                {rangeResult}
+                                {rating}
                             </Rating>
                             <Image className="movie__image">
-                                {
-                                    movie.poster_path
-                                        ? <img
-                                            src={`${imagePath}${movie.poster_path}`}
-                                            alt={movie.title}
-                                        />
-                                        : null
-                                }
+                                <img
+                                    src={posterUrlPreview !== 'N/A' ? posterUrlPreview : 'https://via.placeholder.com/400'}
+                                    alt={nameRu}
+                                />
                             </Image>
                             <Text>
-                                <Title>{movie.title}</Title>
+                                <Title>{nameRu}</Title>
+                                <Genres>{movieGenres}</Genres>
                             </Text>
                         </Card>
                     </Link>
             }
         </>
     );
-}
+};
 
 export default MovieCard;
