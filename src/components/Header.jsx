@@ -218,9 +218,8 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
                     />
                     {
                         searchTerm ? (
-                            <InputClear
-                                onClick={clearSearchInput}
-                            >x
+                            <InputClear onClick={clearSearchInput}>
+                                x
                             </InputClear>
                         ) : null
                     }

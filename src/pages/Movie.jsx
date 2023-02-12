@@ -238,7 +238,9 @@ const Movie = () => {
                 </DetailsRight>
             </Details>
             <Link to={'/'}>
-                <ButtonReturn>Вернуться</ButtonReturn>
+                <ButtonReturn>
+                    Вернуться
+                </ButtonReturn>
             </Link>
         </Container>
     );

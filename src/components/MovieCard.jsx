@@ -138,8 +138,12 @@ const MovieCard = ({movie: {filmId, year, posterUrlPreview, nameRu, rating, genr
                                 />
                             </Image>
                             <Text>
-                                <Title>{nameRu}</Title>
-                                <Genres>{movieGenres}</Genres>
+                                <Title>
+                                    {nameRu}
+                                </Title>
+                                <Genres>
+                                    {movieGenres}
+                                </Genres>
                             </Text>
                         </Card>
                     </Link>
