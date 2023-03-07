@@ -175,18 +175,17 @@ const Movie = () => {
     const {id} = useParams();
 
     useEffect(() => {
+        const fetchMovie = async () => {
+            await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, options)
+                .then(response => {
+                    setMovie(response.data);
+                })
+                .catch(error => {
+                    console.warn('Movie not loading', error);
+                });
+        };
         fetchMovie();
-    });
-
-    const fetchMovie = async () => {
-        await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, options)
-            .then(response => {
-                setMovie(response.data);
-            })
-            .catch(error => {
-                console.warn('Movie not loading', error);
-            });
-    };
+    }, [id]);
 
     return (
         <Container>

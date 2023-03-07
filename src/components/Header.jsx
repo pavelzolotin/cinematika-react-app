@@ -197,7 +197,7 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme}) => {
         if (searchTerm.length >= 1) {
             window.scrollTo(0, 0);
         }
-    }, [searchTerm]);
+    }, [searchTerm, setMovies]);
 
     return (
         <Container>

@@ -113,7 +113,7 @@ const MovieCard = ({movie: {filmId, year, posterUrlPreview, nameRu, rating, genr
         setTimeout(() => {
             setIsLoading(false);
         }, 2000)
-    });
+    }, []);
 
     return (
         <>
