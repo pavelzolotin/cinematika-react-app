@@ -1,7 +1,5 @@
-import {useEffect} from 'react';
 import styled from 'styled-components';
 
-import {fetchMovies} from '../utils/fetchFromAPI';
 import MovieList from '../components/MovieList';
 
 const CardBox = styled.div`
@@ -18,16 +16,12 @@ const CardBox = styled.div`
   }
 `;
 
-const Home = ({searchTerm, movies, setMovies}) => {
-
-    useEffect(() => {
-        fetchMovies(searchTerm, setMovies);
-    }, [searchTerm, setMovies]);
-
+const Home = ({movies, isLoading}) => {
     return (
         <CardBox>
             <MovieList
                 movies={movies}
+                isLoading={isLoading}
             />
         </CardBox>
     );

@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+
 import styled from 'styled-components';
 
 import Skeleton from './Skeleton';
@@ -104,16 +104,8 @@ const Genres = styled.span`
   color: #b7b7b7;
 `;
 
-const MovieCard = ({movie: {filmId, year, posterUrlPreview, nameRu, rating, genres}}) => {
-    const [isLoading, setIsLoading] = useState(true);
-
+const MovieCard = ({movie: {filmId, year, posterUrlPreview, nameRu, rating, genres}, isLoading}) => {
     const movieGenres = genres.map(genre => ` ${genre.genre}`).join(',');
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000)
-    }, []);
 
     return (
         <>

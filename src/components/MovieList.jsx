@@ -19,7 +19,7 @@ const CardBox = styled.div`
   margin: 0 0 7rem 0;
 `;
 
-const MovieList = ({movies}) => {
+const MovieList = ({movies, isLoading}) => {
     return (
         <Container>
             <CardBox>
@@ -28,6 +28,7 @@ const MovieList = ({movies}) => {
                         <MovieCard
                             key={movie.filmId}
                             movie={movie}
+                            isLoading={isLoading}
                         />
                     ))
                 }
