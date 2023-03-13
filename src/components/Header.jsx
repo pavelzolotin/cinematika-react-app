@@ -197,7 +197,7 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme, setIsLoa
             await axios.get(`${searchTerm ? API_SEARCH + searchTerm : API_URL}`, options)
                 .then(response => {
                     setMovies(response.data.films);
-                    setTimeout(() => setIsLoading(false), 1000);
+                    setIsLoading(false);
                 })
                 .catch(error => {
                     console.warn('Movies not loading', error);
