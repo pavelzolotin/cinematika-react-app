@@ -2,9 +2,7 @@ import {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import styled from 'styled-components';
-import axios from 'axios';
 
-import {API_SEARCH, API_URL, options} from '../utils/constants';
 import LogoDark from '../assets/img/dark-logo.png';
 import LogoLight from '../assets/img/light-logo.png';
 import MoonIcon from '../assets/img/moon-icon.svg';
@@ -172,7 +170,7 @@ const Toggle = styled.span`
   transition: transform .2s linear;
 `;
 
-const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme, setIsLoading}) => {
+const Header = ({searchTerm, setSearchTerm, theme, setTheme}) => {
     const toggleIsClicked = theme === 'light' ? true : '';
 
     const toggleTheme = () => {
@@ -191,24 +189,6 @@ const Header = ({searchTerm, setSearchTerm, setMovies, theme, setTheme, setIsLoa
     useEffect(() => {
         localStorage.setItem('theme', theme);
     }, [theme]);
-
-    useEffect(() => {
-        const fetchMovies = async () => {
-            await axios.get(`${searchTerm ? API_SEARCH + searchTerm : API_URL}`, options)
-                .then(response => {
-                    setMovies(response.data.films);
-                    setIsLoading(false);
-                })
-                .catch(error => {
-                    console.warn('Movies not loading', error);
-                });
-        };
-        fetchMovies();
-
-        if (searchTerm.length >= 1) {
-            window.scrollTo(0, 0);
-        }
-    }, [searchTerm, setMovies, setIsLoading]);
 
     return (
         <Container>

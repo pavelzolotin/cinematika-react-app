@@ -1,5 +1,9 @@
+import {useEffect} from 'react';
+
+import axios from 'axios';
 import styled from 'styled-components';
 
+import {API_SEARCH, API_URL, options} from '../utils/constants';
 import MovieList from '../components/MovieList';
 
 const CardBox = styled.div`
@@ -16,7 +20,26 @@ const CardBox = styled.div`
   }
 `;
 
-const Home = ({movies, isLoading}) => {
+const Home = ({movies, setMovies, searchTerm, isLoading, setIsLoading}) => {
+
+    useEffect(() => {
+        const fetchMovies = async () => {
+            await axios.get(`${searchTerm ? API_SEARCH + searchTerm : API_URL}`, options)
+                .then(response => {
+                    setMovies(response.data.films);
+                    setIsLoading(false);
+                })
+                .catch(error => {
+                    console.warn('Movies not loading', error);
+                });
+        };
+        fetchMovies();
+
+        if (searchTerm.length >= 1) {
+            window.scrollTo(0, 0);
+        }
+    }, [searchTerm, setMovies, setIsLoading]);
+
     return (
         <CardBox>
             <MovieList

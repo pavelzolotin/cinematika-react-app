@@ -94,16 +94,17 @@ function App() {
                     <Header
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
-                        setMovies={setMovies}
                         theme={theme}
                         setTheme={setTheme}
-                        setIsLoading={setIsLoading}
                     />
                     <Routes>
                         <Route path="/" element={
                             <Home
                                 movies={movies}
+                                setMovies={setMovies}
+                                searchTerm={searchTerm}
                                 isLoading={isLoading}
+                                setIsLoading={setIsLoading}
                             />
                         }/>
                         <Route path="films/:id" element={<Movie/>}/>
