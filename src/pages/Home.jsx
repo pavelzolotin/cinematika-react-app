@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 import axios from 'axios';
 import styled from 'styled-components';
@@ -20,7 +20,9 @@ const CardBox = styled.div`
   }
 `;
 
-const Home = ({movies, setMovies, searchTerm, isLoading, setIsLoading}) => {
+const Home = ({searchTerm}) => {
+    const [movies, setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchMovies = async () => {

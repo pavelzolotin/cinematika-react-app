@@ -79,9 +79,7 @@ const Container = styled.div`
 `;
 
 function App() {
-    const [movies, setMovies] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
     return (
@@ -100,11 +98,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={
                             <Home
-                                movies={movies}
-                                setMovies={setMovies}
                                 searchTerm={searchTerm}
-                                isLoading={isLoading}
-                                setIsLoading={setIsLoading}
                             />
                         }/>
                         <Route path="films/:id" element={<Movie/>}/>
