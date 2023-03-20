@@ -1,7 +1,9 @@
+import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import {setSearchValue} from '../redux/slices/searchSlice';
 import ToggleTheme from './ToggleTheme';
 import LogoDark from '../assets/img/dark-logo.png';
 import LogoLight from '../assets/img/light-logo.png';
@@ -108,9 +110,13 @@ const InputBg = styled.span`
   }
 `;
 
-const Header = ({searchTerm, setSearchTerm, theme, setTheme}) => {
+const Header = () => {
+    const dispatch = useDispatch();
+    const {searchValue} = useSelector(state => state.search);
+    const {theme} = useSelector(state => state.mode);
+
     const clearSearchInput = () => {
-        setSearchTerm('');
+        dispatch(setSearchValue(''));
         window.scrollTo(0, 0);
     };
 
@@ -128,11 +134,11 @@ const Header = ({searchTerm, setSearchTerm, theme, setTheme}) => {
                     <Input
                         type="text"
                         placeholder="Поиск"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
+                        value={searchValue}
+                        onChange={(e) => dispatch(setSearchValue(e.target.value))}
                     />
                     {
-                        searchTerm ? (
+                        searchValue ? (
                             <InputClear onClick={clearSearchInput}>
                                 x
                             </InputClear>
@@ -141,10 +147,7 @@ const Header = ({searchTerm, setSearchTerm, theme, setTheme}) => {
                     <InputBg className="movie__input--bg"/>
                 </Form>
             </MovieSearch>
-            <ToggleTheme
-                theme={theme}
-                setTheme={setTheme}
-            />
+            <ToggleTheme/>
         </Container>
     );
 };

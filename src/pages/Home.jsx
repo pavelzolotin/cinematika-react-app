@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
 
 import axios from 'axios';
 import styled from 'styled-components';
@@ -20,13 +21,14 @@ const CardBox = styled.div`
   }
 `;
 
-const Home = ({searchTerm}) => {
+const Home = () => {
+    const {searchValue} = useSelector(state => state.search);
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchMovies = async () => {
-            await axios.get(`${searchTerm ? API_SEARCH + searchTerm : API_URL}`, options)
+            await axios.get(`${searchValue ? API_SEARCH + searchValue : API_URL}`, options)
                 .then(response => {
                     setMovies(response.data.films);
                     setIsLoading(false);
@@ -37,10 +39,10 @@ const Home = ({searchTerm}) => {
         };
         fetchMovies();
 
-        if (searchTerm.length >= 1) {
+        if (searchValue.length >= 1) {
             window.scrollTo(0, 0);
         }
-    }, [searchTerm, setMovies, setIsLoading]);
+    }, [searchValue, setMovies, setIsLoading]);
 
     return (
         <CardBox>

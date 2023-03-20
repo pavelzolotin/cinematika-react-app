@@ -1,7 +1,9 @@
 import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 import styled from 'styled-components';
 
+import {setTheme} from '../redux/slices/themeSlice';
 import MoonIcon from '../assets/img/moon-icon.svg';
 import SunIcon from '../assets/img/sun-warm-icon.svg';
 
@@ -65,14 +67,16 @@ const Toggle = styled.span`
   transition: transform .2s linear;
 `;
 
-const ToggleTheme = ({theme, setTheme}) => {
+const ToggleTheme = () => {
+    const dispatch = useDispatch();
+    const {theme} = useSelector(state => state.mode);
     const toggleIsClicked = theme === 'light' ? true : '';
 
     const toggleTheme = () => {
         if (theme === 'dark') {
-            setTheme('light');
+            dispatch(setTheme('light'));
         } else {
-            setTheme('dark');
+            dispatch(setTheme('dark'));
         }
     };
 

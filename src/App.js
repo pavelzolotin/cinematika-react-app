@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useSelector} from 'react-redux';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
 
@@ -79,8 +79,7 @@ const Container = styled.div`
 `;
 
 function App() {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+    const {theme} = useSelector(state => state.mode);
 
     return (
         <ThemeProvider
@@ -89,17 +88,10 @@ function App() {
             <BrowserRouter>
                 <GlobalStyle/>
                 <Container>
-                    <Header
-                        searchTerm={searchTerm}
-                        setSearchTerm={setSearchTerm}
-                        theme={theme}
-                        setTheme={setTheme}
-                    />
+                    <Header/>
                     <Routes>
                         <Route path="/" element={
-                            <Home
-                                searchTerm={searchTerm}
-                            />
+                            <Home/>
                         }/>
                         <Route path="films/:id" element={<Movie/>}/>
                     </Routes>
