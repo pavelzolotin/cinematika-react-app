@@ -27,8 +27,8 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchMovies = async () => {
-            await axios.get(`${searchValue ? API_SEARCH + searchValue : API_URL}`, options)
+        const fetchMovies = () => {
+            axios.get(`${searchValue ? API_SEARCH + searchValue : API_URL}`, options)
                 .then(response => {
                     setMovies(response.data.films);
                     setIsLoading(false);
