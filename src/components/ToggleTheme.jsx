@@ -15,17 +15,18 @@ const ToggleBox = styled.div`
   }
 `;
 
-const ToggleInput = styled.input`
+const Toggle = styled.span`
   position: absolute;
-  right: 0;
-  visibility: hidden;
-
-  &:checked + .app__toggle-theme--label .app__toggle-theme--toggle {
-    transform: translateX(2.8rem);
-  }
+  width: 2.2rem;
+  height: 2.2rem;
+  left: .2rem;
+  top: 0;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform .2s linear;
 `;
 
-const ToggleLabel = styled.label`
+const Label = styled.label`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,7 +39,7 @@ const ToggleLabel = styled.label`
   padding: .7rem;
   cursor: pointer;
 
-  & .app__toggle-theme--toggle {
+  & ${Toggle} {
     position: absolute;
     width: 2.2rem;
     height: 2.2rem;
@@ -50,21 +51,20 @@ const ToggleLabel = styled.label`
   }
 `;
 
-const ToggleIcon = styled.img`
+const Input = styled.input`
+  position: absolute;
+  right: 0;
+  visibility: hidden;
+
+  &:checked + ${Label} ${Toggle} {
+    transform: translateX(2.8rem);
+  }
+`;
+
+const Icon = styled.img`
   display: block;
   width: 1.5rem;
   height: 1.5rem;
-`;
-
-const Toggle = styled.span`
-  position: absolute;
-  width: 2.2rem;
-  height: 2.2rem;
-  left: .2rem;
-  top: 0;
-  background-color: #fff;
-  border-radius: 50%;
-  transition: transform .2s linear;
 `;
 
 const ToggleTheme = () => {
@@ -86,23 +86,23 @@ const ToggleTheme = () => {
 
     return (
         <ToggleBox>
-            <ToggleInput
+            <Input
                 type="checkbox"
                 id="theme-toggle"
                 onChange={() => toggleTheme()}
                 checked={toggleIsClicked}
             />
-            <ToggleLabel htmlFor="theme-toggle" className="app__toggle-theme--label">
-                <ToggleIcon
+            <Label htmlFor="theme-toggle" className="app__toggle-theme--label">
+                <Icon
                     src={MoonIcon}
                     alt=""
                 />
-                <ToggleIcon
+                <Icon
                     src={SunIcon}
                     alt=""
                 />
                 <Toggle className="app__toggle-theme--toggle"/>
-            </ToggleLabel>
+            </Label>
         </ToggleBox>
     );
 };
