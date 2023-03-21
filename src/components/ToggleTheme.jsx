@@ -92,7 +92,7 @@ const ToggleTheme = () => {
                 onChange={() => toggleTheme()}
                 checked={toggleIsClicked}
             />
-            <Label htmlFor="theme-toggle" className="app__toggle-theme--label">
+            <Label htmlFor="theme-toggle">
                 <Icon
                     src={MoonIcon}
                     alt=""
@@ -101,7 +101,7 @@ const ToggleTheme = () => {
                     src={SunIcon}
                     alt=""
                 />
-                <Toggle className="app__toggle-theme--toggle"/>
+                <Toggle/>
             </Label>
         </ToggleBox>
     );
