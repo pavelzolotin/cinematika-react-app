@@ -86,14 +86,16 @@ function App() {
             theme={theme === 'dark' ? darkTheme : lightTheme}
         >
             <BrowserRouter>
-                <GlobalStyle/>
+                <GlobalStyle />
                 <Container>
-                    <Header/>
+                    <Header />
                     <Routes>
                         <Route path="/" element={
-                            <Home/>
-                        }/>
-                        <Route path="films/:id" element={<Movie/>}/>
+                            <Home />
+                        } />
+                        <Route path="films/:id" element={
+                            <Movie />
+                        } />
                     </Routes>
                 </Container>
             </BrowserRouter>

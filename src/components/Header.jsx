@@ -105,7 +105,7 @@ const CloseIcon = styled.div`
   @media (max-width: 767px) {
     font-size: 1.6rem;
   }
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -129,9 +129,9 @@ const Header = () => {
 
     const updateSearchValue = useMemo(
         () =>
-        debounce((str) => {
-            dispatch(setSearchValue(str));
-        }, 500),
+            debounce((str) => {
+                dispatch(setSearchValue(str));
+            }, 500),
         [dispatch]
     );
 
@@ -176,10 +176,10 @@ const Header = () => {
                             </CloseIcon>
                         ) : null
                     }
-                    <InputBg className="movie__input--bg"/>
+                    <InputBg className="movie__input--bg" />
                 </Form>
             </MovieSearch>
-            <ToggleTheme/>
+            <ToggleTheme />
         </Container>
     );
 };

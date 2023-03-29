@@ -101,7 +101,7 @@ const ToggleTheme = () => {
                     src={SunIcon}
                     alt=""
                 />
-                <Toggle/>
+                <Toggle />
             </Label>
         </ToggleBox>
     );

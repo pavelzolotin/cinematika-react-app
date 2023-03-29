@@ -190,16 +190,12 @@ const Movie = () => {
     return (
         <Container>
             <Intro>
-                <Backdrop
-                    src={currentMovieDetail.posterUrl}
-                />
+                <Backdrop src={currentMovieDetail.posterUrl} />
             </Intro>
             <Details>
                 <DetailsLeft>
                     <PosterBox>
-                        <Poster
-                            src={currentMovieDetail.posterUrl}
-                        />
+                        <Poster src={currentMovieDetail.posterUrl} />
                     </PosterBox>
                 </DetailsLeft>
                 <DetailsRight>
@@ -210,7 +206,7 @@ const Movie = () => {
                         <VoteAverage>
                             {currentMovieDetail ? currentMovieDetail.ratingKinopoisk : ''}
                         </VoteAverage>
-                        <StarIcon/>
+                        <StarIcon />
                     </Rating>
                     <ReleaseDate>
                         {currentMovieDetail ? 'Дата выхода: ' + currentMovieDetail.year : ''}
@@ -236,7 +232,7 @@ const Movie = () => {
                     </Description>
                 </DetailsRight>
             </Details>
-            <Link to={'/'}>
+            <Link to="/">
                 <ButtonReturn>
                     Вернуться
                 </ButtonReturn>

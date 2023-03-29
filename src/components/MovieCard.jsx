@@ -112,7 +112,7 @@ const MovieCard = ({movie: {filmId, year, posterUrlPreview, nameRu, rating, genr
             {
                 isLoading
                     ? <Card>
-                        <Skeleton/>
+                        <Skeleton />
                     </Card>
                     :
                     <Link to={`/films/${filmId}`}>
