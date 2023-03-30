@@ -176,13 +176,12 @@ const Movie = () => {
 
     useEffect(() => {
         const fetchMovie = async () => {
-            await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, options)
-                .then(response => {
-                    setMovie(response.data);
-                })
-                .catch(error => {
-                    console.warn('Movie not loading', error);
-                });
+            try {
+                const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, options)
+                setMovie(response.data);
+            } catch (err) {
+                console.warn('Movie not loading', err);
+            }
         };
         fetchMovie();
     }, [id]);

@@ -27,15 +27,14 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchMovies = () => {
-            axios.get(`${searchValue ? API_SEARCH + searchValue : API_URL}`, options)
-                .then(response => {
-                    setMovies(response.data.films);
-                    setIsLoading(false);
-                })
-                .catch(error => {
-                    console.warn('Movies not loading', error);
-                });
+        const fetchMovies = async () => {
+            try {
+                const response = await axios.get(`${searchValue ? API_SEARCH + searchValue : API_URL}`, options)
+                setMovies(response.data.films);
+                setIsLoading(false);
+            } catch (err) {
+                console.warn('Movies not loading', err);
+            }
         };
         fetchMovies();
 
