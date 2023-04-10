@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import MovieCard from '../components/MovieCard';
+import MovieCard from './MovieCard';
 
 const Container = styled.div`
   display: flex;

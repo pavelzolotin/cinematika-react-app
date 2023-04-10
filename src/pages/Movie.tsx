@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react';
-import {useParams, Link} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
 import axios from 'axios';
 import styled from 'styled-components';
 import StarIcon from '@mui/icons-material/Star';
-import {options} from '../utils/constants';
+import { options } from '../utils/constants';
 
 const Container = styled.div`
   display: flex;
@@ -170,8 +170,21 @@ const ButtonReturn = styled.button`
   }
 `;
 
+type MovieState = {
+    posterUrl: string;
+    nameRu: string;
+    ratingKinopoisk: string;
+    year: string;
+    genres: [
+        {
+            genre: string;
+        }
+    ];
+    description: string;
+}
+
 const Movie = () => {
-    const [currentMovieDetail, setMovie] = useState([]);
+    const [currentMovieDetail, setMovie] = useState<MovieState>([] as any);
     const {id} = useParams();
 
     useEffect(() => {

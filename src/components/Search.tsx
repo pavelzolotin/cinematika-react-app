@@ -1,10 +1,10 @@
-import {useState, useRef, useMemo} from 'react';
-import {useDispatch} from 'react-redux';
+import React, { useState, useRef, useMemo } from 'react';
+import { useDispatch } from 'react-redux';
 
-import debounce from 'lodash.debounce';
+import { debounce } from 'lodash';
 import styled from 'styled-components';
 
-import {setSearchValue} from '../redux/slices/searchSlice';
+import { setSearchValue } from '../redux/search/slice';
 import IconClose from '../assets/img/close-icon.png';
 
 const Form = styled.form``;
@@ -77,11 +77,11 @@ const InputBg = styled.span`
 const Search = () => {
     const dispatch = useDispatch();
     const [value, setValue] = useState('');
-    const inputRef = useRef(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const updateSearchValue = useMemo(
         () =>
-            debounce((str) => {
+            debounce(str => {
                 dispatch(setSearchValue(str));
             }, 500),
         [dispatch]
@@ -91,37 +91,39 @@ const Search = () => {
         dispatch(setSearchValue(''));
         setValue('');
 
-        inputRef.current.focus();
+        if (inputRef.current) {
+            inputRef.current?.focus();
+        }
         window.scrollTo(0, 0);
     };
 
-    const onChangeInput = (event) => {
+    const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
         updateSearchValue(event.target.value);
     };
 
-  return (
-          <Form>
-              <Input
-                  ref={inputRef}
-                  type="text"
-                  placeholder="Поиск"
-                  value={value}
-                  onChange={onChangeInput}
-              />
-              {
-                  value ? (
-                      <CloseIcon onClick={clearSearchInput}>
-                          <img
-                              src={IconClose}
-                              alt="close-icon"
-                          />
-                      </CloseIcon>
-                  ) : null
-              }
-              <InputBg className="movie__input--bg" />
-          </Form>
-  );
+    return (
+        <Form>
+            <Input
+                ref={inputRef}
+                type="text"
+                placeholder="Поиск"
+                value={value}
+                onChange={onChangeInput}
+            />
+            {
+                value ? (
+                    <CloseIcon onClick={clearSearchInput}>
+                        <img
+                            src={IconClose}
+                            alt="close-icon"
+                        />
+                    </CloseIcon>
+                ) : null
+            }
+            <InputBg className="movie__input--bg" />
+        </Form>
+    );
 };
 
 export default Search;

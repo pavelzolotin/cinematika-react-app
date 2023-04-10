@@ -1,10 +1,11 @@
-import {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import axios from 'axios';
 import styled from 'styled-components';
 
-import {API_SEARCH, API_URL, options} from '../utils/constants';
+import { searchSelector } from '../redux/search/selectors';
+import { API_SEARCH, API_URL, options } from '../utils/constants';
 import MovieList from '../components/MovieList';
 
 const CardBox = styled.div`
@@ -22,7 +23,7 @@ const CardBox = styled.div`
 `;
 
 const Home = () => {
-    const {searchValue} = useSelector(state => state.search);
+    const {searchValue} = useSelector(searchSelector);
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 

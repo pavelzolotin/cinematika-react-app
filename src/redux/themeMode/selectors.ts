@@ -1,0 +1,1 @@
+export const themeSelector = (state: any) => state.theme;

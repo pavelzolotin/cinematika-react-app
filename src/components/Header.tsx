@@ -1,8 +1,9 @@
-import {Link, useLocation} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
+import { themeSelector } from '../redux/themeMode/selectors';
 import ToggleTheme from './ToggleTheme';
 import Search from './Search';
 import LogoDark from '../assets/img/dark-logo.png';
@@ -51,7 +52,7 @@ const MovieSearch = styled.div`
 `;
 
 const Header = () => {
-    const {theme} = useSelector(state => state.mode);
+    const {theme} = useSelector(themeSelector);
     const {pathname} = useLocation();
 
     return (

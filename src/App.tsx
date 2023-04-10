@@ -1,12 +1,16 @@
-import {useSelector} from 'react-redux';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
+import { lazy, Suspense } from 'react';
+import { useSelector } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
+import { themeSelector } from './redux/themeMode/selectors';
 import Header from './components/Header';
 import Home from './pages/Home';
-import Movie from './pages/Movie';
+import Loading from './components/Loading';
 
-import {darkTheme, lightTheme} from './utils/Theme';
+import { darkTheme, lightTheme } from './utils/Theme';
+
+const Movie = lazy(() => import('./pages/Movie'));
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -79,7 +83,7 @@ const Container = styled.div`
 `;
 
 function App() {
-    const {theme} = useSelector(state => state.mode);
+    const {theme} = useSelector(themeSelector);
 
     return (
         <ThemeProvider
@@ -94,7 +98,9 @@ function App() {
                             <Home />
                         } />
                         <Route path="films/:id" element={
-                            <Movie />
+                            <Suspense fallback={<Loading/>}>
+                                <Movie />
+                            </Suspense>
                         } />
                     </Routes>
                 </Container>
