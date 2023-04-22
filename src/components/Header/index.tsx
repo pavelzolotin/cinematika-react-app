@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
-import { themeSelector } from '../redux/themeMode/selectors';
-import ToggleTheme from './ToggleTheme';
-import Search from './Search';
-import LogoDark from '../assets/img/dark-logo.png';
-import LogoLight from '../assets/img/light-logo.png';
+import { themeSelector } from '../../redux/themeMode/selectors';
+import ToggleTheme from '../../UI/ToggleTheme';
+import Search from '../Search';
+import LogoDark from '../../assets/img/dark-logo.png';
+import LogoLight from '../../assets/img/light-logo.png';
 
 const Container = styled.div`
   display: flex;

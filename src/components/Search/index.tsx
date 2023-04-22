@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { debounce } from 'lodash';
 import styled from 'styled-components';
 
-import { setSearchValue } from '../redux/search/slice';
-import IconClose from '../assets/img/close-icon.png';
+import { setSearchValue } from '../../redux/search/slice';
+import IconClose from '../../assets/img/close-icon.png';
 
 const Form = styled.form``;
 
@@ -105,6 +105,7 @@ const Search = () => {
     return (
         <Form>
             <Input
+                data-testid="search-input"
                 ref={inputRef}
                 type="text"
                 placeholder="Поиск"

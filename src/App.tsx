@@ -1,12 +1,13 @@
 import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import { themeSelector } from './redux/themeMode/selectors';
 import Header from './components/Header';
 import Home from './pages/Home';
-import Loading from './components/Loading';
+import PageNotFound from './pages/PageNotFound';
+import Loading from './UI/Loading';
 
 import { darkTheme, lightTheme } from './utils/Theme';
 
@@ -89,22 +90,23 @@ function App() {
         <ThemeProvider
             theme={theme === 'dark' ? darkTheme : lightTheme}
         >
-            <BrowserRouter>
-                <GlobalStyle />
-                <Container>
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={
-                            <Home />
-                        } />
-                        <Route path="films/:id" element={
-                            <Suspense fallback={<Loading/>}>
-                                <Movie />
-                            </Suspense>
-                        } />
-                    </Routes>
-                </Container>
-            </BrowserRouter>
+            <GlobalStyle />
+            <Container>
+                <Header />
+                <Routes>
+                    <Route path="/" element={
+                        <Home />
+                    } />
+                    <Route path="films/:id" element={
+                        <Suspense fallback={<Loading />}>
+                            <Movie />
+                        </Suspense>
+                    } />
+                    <Route path="*" element={
+                        <PageNotFound />
+                    } />
+                </Routes>
+            </Container>
         </ThemeProvider>
     );
 }

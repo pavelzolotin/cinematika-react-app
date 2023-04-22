@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import Skeleton from './Skeleton';
+import Skeleton from '../../UI/Skeleton';
 
 const Card = styled.div`
   position: relative;
