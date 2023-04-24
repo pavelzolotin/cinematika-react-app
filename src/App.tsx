@@ -4,12 +4,11 @@ import { Routes, Route } from 'react-router-dom';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import { themeSelector } from './redux/themeMode/selectors';
+import { darkTheme, lightTheme } from './utils/Theme';
+import Loading from './UI/Loading';
 import Header from './components/Header';
 import Home from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
-import Loading from './UI/Loading';
-
-import { darkTheme, lightTheme } from './utils/Theme';
 
 const Movie = lazy(() => import('./pages/Movie'));
 

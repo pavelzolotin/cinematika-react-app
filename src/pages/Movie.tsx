@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import StarIcon from '@mui/icons-material/Star';
+
 import { options } from '../utils/constants';
 
 const Container = styled.div`
